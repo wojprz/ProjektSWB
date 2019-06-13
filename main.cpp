@@ -6,102 +6,99 @@
 #include <string>
 #include <iostream>
 
-
-using namespace std;
 int main(int argc, char *argv[])
 {
 	int options, menu, liczba, modulo, temmod, deskryptor, count;
-	string slowo, jest;
+	std::string slowo, jest;
 	char znak, decyzja;
-	
 	while((options = getopt(argc, argv, "wp")) != -1)
 	{
 		switch(options)
 		{
 			case 'w':
-				cout<<"Wojciech Przyby³a i Przemys³aw P³óciennik\n";
+                std::cout<<"Wojciech PrzybyÅ‚a i PrzemysÅ‚aw PÅ‚Ã³ciennik\n";
 		exit(0);
 				break;
 			case 'p':
-				cout<<"Projekt na SWB\n";
+                std::cout<<"Projekt na SWB\n";
 		exit(0);
 				break;
 		}
 menu:
-		cout<<"Wybierz: \n";
-		cout<<"1)Sprawdzanie palindromu.\n";
-		cout<<"2)Zliczanie wyst¹pieñ.\n";
-		cout<<"3)Obliczanie mod.\n";
-		cin>>menu;
+        std::cout<<"Wybierz: \n";
+        std::cout<<"1)Sprawdzanie palindromu.\n";
+        std::cout<<"2)Zliczanie wystÄ…pieÅ„.\n";
+        std::cout<<"3)Obliczanie mod.\n";
+        std::cin>>menu;
 		
 		switch(menu)
 		{
 			case 1:
-				cin>>slowo;
+                std::cin>>slowo;
 				if(palindrom(slowo))
 				{
-					cout<<"S³owo jest palindromem.\n";
+                    std::cout<<"SÂ¿owo jest palindromem.\n";
 					jest = " jest ";
 				}
 				jest = " nie jest ";
-				cout<<"Czy zapisaæ wyniki do pliku? Y/N \n";
-				cin>>decyzja;
+                std::cout<<"Czy zapisaÂ¿ wyniki do pliku? Y/N \n";
+                std::cin>>decyzja;
 				if(decyzja == 'Y')
 				{
 					deskryptor = open("wyniki.txt", 1);
 					if((deskryptor=open("wyniki.txt", 1)) == -1)
-						cout<<"Brak pliku!\n";
+						std::cout<<"Brak pliku!\n";
 					dup2(deskryptor, 1);
 					write(deskryptor, "Nowe zadanie\n", 13);
-					cout<<"Slowo: "<<slowo<<jest<<"palindromem.\n";
+                    std::cout<<"Slowo: "<<slowo<<jest<<"palindromem.\n";
 					close(deskryptor);
 				}	
-				cin.ignore();
+                std::cin.ignore();
 				system("cls");
 				goto menu;
 			case 2:
-				cout<<"Podaj ci¹g znaków!\n";
-				cin>>slowo;
-				cout<<"Podaj znak\n";
-				cin>>znak;
-				count = wystapienia(slowo, znak);
-				cout<<count<<endl;
-				cout<<"Czy zapisaæ wyniki do pliku? Y/N \n";
-				cin>>decyzja;
+                std::cout<<"Podaj ciÄ…g znakÃ³w!\n";
+                std::cin>>slowo;
+                std::cout<<"Podaj znak\n";
+                std::cin>>znak;
+                count = wystapienia(slowo, znak);
+                std::cout<<count<<"\n";
+                std::cout<<"Czy zapisaÄ‡ wyniki do pliku? Y/N \n";
+                std::cin>>decyzja;
 				if(decyzja == 'Y')
 				{
 					deskryptor = open("wyniki.txt", 1);
 					if((deskryptor=open("wyniki.txt", 1)) == -1)
-						cout<<"Brak pliku!\n";
+						std::cout<<"Brak pliku!\n";
 					dup2(deskryptor, 1);
 					write(deskryptor, "Nowe zadanie\n", 13);
-					cout<<"Liczba wyst¹pieñ znaku: "<<znak<<"równa siê: "<<count<<endl;
+                    std::cout<<"Liczba wystÄ…pieÅ„ znaku: "<<znak<<"rÃ³wna siÄ™: "<<count<<"\n";
 					close(deskryptor);
 				}	
-				cin.ignore();
+                std::cin.ignore();
 				system("cls");	
 				goto menu;			
 			case 3:
-				cout<<"Podaj liczbê!\n";
-				cin>>liczba;
-				cout<<"Podaj modulo!\n";
-				cin>>modulo;
+                std::cout<<"Podaj liczbÄ™!\n";
+                std::cin>>liczba;
+                std::cout<<"Podaj modulo!\n";
+                std::cin>>modulo;
 				temmod = liczmod(liczba, modulo);
-				cout<<liczba<<" mod "<<modulo<<"równa siê: "<<temmod<<endl;
+                std::cout<<liczba<<" mod "<<modulo<<"rÃ³wna siÄ™: "<<temmod<<"\n";
 				
-				cout<<"Czy zapisaæ wyniki do pliku? Y/N \n";
-				cin>>decyzja;
+                std::cout<<"Czy zapisaÂ¿ wyniki do pliku? Y/N \n";
+                std::cin>>decyzja;
 				if(decyzja == 'Y')
 				{
 					deskryptor = open("wyniki.txt", 1);
 					if((deskryptor=open("wyniki.txt", 1)) == -1)
-						cout<<"Brak pliku!\n";
+						std::cout<<"Brak pliku!\n";
 					dup2(deskryptor, 1);
 					write(deskryptor, "Nowe zadanie\n", 13);
-					cout<<liczba<<" mod "<<modulo<<" rowna siê: "<<temmod<<endl;
+                    std::cout<<liczba<<" mod "<<modulo<<" rowna siÄ™: "<<temmod<<"\n";
 					close(deskryptor);
 				}	
-				cin.ignore();
+                std::cin.ignore();
 				system("cls");
 				goto menu;
 			default:
