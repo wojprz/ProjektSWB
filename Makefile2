@@ -10,4 +10,4 @@ projekt: $(OBJ)
 .PHONY:clean
 
 clean:
-rm -f projekt $(OBJ)
+	rm -f projekt $(OBJ)
