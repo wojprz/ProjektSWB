@@ -1,6 +1,6 @@
 CC:=gcc
-SRCS:=main.cpp slowa.cpp liczby.cpp
-OBJ:=$(subst .cpp,.o, $(SRCS))
+SRCS:=main.c slowa.c liczby.c
+OBJ:=$(subst .c,.o, $(SRCS))
 projekt: $(OBJ)
 	@$(CC) $(OBJ) -o projekt
 
