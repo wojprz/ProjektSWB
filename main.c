@@ -32,6 +32,7 @@ menu:
         printf("1)Sprawdzanie palindromu.\n");
         printf("2)Zliczanie wystąpień.\n");
         printf("3)Obliczanie mod.\n");
+        printf("4)Wyjście.\n");
         scanf("%i", &menu);
 		
 		switch(menu)
@@ -51,16 +52,20 @@ menu:
                 printf("Podaj znak\n");
                 scanf("%s", &znak);
                 count = wystapienia(slowo, znak);
-                printf("%i\n", count);
+                printf("Znak pojawia się: %i\n", count);
 				
 					deskryptor = open("wyniki.txt", 1);
 					if((deskryptor=open("wyniki.txt", 1)) == -1)
-						printf("Brak pliku!\n");
+                    {
+                        printf("Brak pliku!\n");
+                        goto koniec;
+                    }
 					dup2(deskryptor, 1);
 					write(deskryptor, "Nowe zadanie\n", 13);
                     printf("Liczba wystąpień znaku: %c równa się: %i\n", znak, count);
 					dup2(saved_stdout, 1);
                     printf("Zapisano plik!\n");
+                    close(deskryptor);
                 sleep(5);
                 goto menu;
 			case 3:
@@ -73,18 +78,26 @@ menu:
 				
 					deskryptor = open("wyniki.txt", 1);
 					if((deskryptor=open("wyniki.txt", 1)) == -1)
+                    {
 						printf("Brak pliku!\n");
+                        goto koniec;
+                    }
 					dup2(deskryptor, 1);
 					write(deskryptor, "Nowe zadanie\n", 13);
                     printf("Liczba %i mod %i równa się: %i\n", liczba, modulo, temmod);
                     dup2(saved_stdout, 1);
                     printf("Zapisano plik\n");
+                    close(deskryptor);
                 sleep(5);
                 goto menu;
+            case 4:
+                goto koniec;
 			default:
 				printf("Zły wybór!\n");
                 sleep(5);
-                goto menu;
+                goto koniec;
 		}
-	return 0;
+koniec:
+    printf("Dowidzenia!\n");
+    return 0;
 }
