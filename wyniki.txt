@@ -1,2 +1,2 @@
 Nowe zadanie
-Liczba wystąpień znaku: a równa się: 3
+Liczba 414 mod 14 równa się: 8

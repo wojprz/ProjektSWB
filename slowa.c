@@ -1,4 +1,5 @@
 #include <stdbool.h>
+#include <string.h>
 bool palindrom(char slowo[])
 {
 	int flag = 0;
