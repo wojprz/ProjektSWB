@@ -1,4 +1,5 @@
 #include "./slowa.hpp"
+#include "./liczby.hpp"
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
