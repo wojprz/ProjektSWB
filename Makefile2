@@ -1,4 +1,4 @@
-CC:=tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-gcc
+CC:=tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-gcc -std=c99
 SRCS:=main.c slowa.c liczby.c
 OBJ:=$(subst .c,.o, $(SRCS))
 projekt: $(OBJ)
