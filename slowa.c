@@ -3,9 +3,15 @@ bool palindrom(char slowo[])
 {
 	int flag = 0;
 	int length = sizeof(slowo);
-	for(int i=0;i < length ;i++)
+    int templength = length;
+    for(int j=0;j<length;j++)
+    {
+        if(slowo[j]==slowo[sizeof(slowo)-1])
+            templength--;
+    }
+	for(int i=0;i < templength ;i++)
 	{
-        if(slowo[i] != slowo[length-i-1])
+        if(slowo[i] != slowo[templength-i-1])
 		{
             flag = 1;
             break;
@@ -17,7 +23,14 @@ bool palindrom(char slowo[])
 int wystapienia(char slowo[], char znak)
 {
 	int count = 0;
-	for(int i=0;i<sizeof(slowo);i++)
+    int length = sizeof(slowo);
+    int templength = length;
+    for(int j=0;j<length;j++)
+    {
+        if(slowo[j]==slowo[sizeof(slowo)-1])
+            templength--;
+    }
+	for(int i=0;i<templength;i++)
 	{
 		if(slowo[i] == znak)
 			count++;
