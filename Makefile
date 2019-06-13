@@ -1,10 +1,10 @@
 CC:=gcc
-SRCS:=main.cpp liczby.cpp slowa.cpp
-OBJ:=$(subset .cpp, .o, $(SRCS))
+SRCS:=main.cpp slowa.cpp liczby.cpp
+OBJ:=$(subst .cpp,.o, $(SRCS))
 projekt: $(OBJ)
 	@$(CC) $(OBJ) -o projekt
 
-%.o: %.cpp
+%.o: %.c
 	@$(CC) -c $<
 
 .PHONY:clean
