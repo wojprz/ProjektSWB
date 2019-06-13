@@ -1,0 +1,13 @@
+CC:=tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-gcc
+SRCS:=main.c slowa.c liczby.c
+OBJ:=$(subst .c,.o, $(SRCS))
+projekt: $(OBJ)
+	@$(CC) $(OBJ) -o projekt
+
+%.o: %.c
+	@$(CC) -c $<
+
+.PHONY:clean
+
+clean:
+rm -f projekt $(OBJ)
